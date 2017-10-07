@@ -1,0 +1,44 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Uploaded at</th>
+          <th>Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for document in documents %}
+          <tr>
+            <td>
+                <a href="{{ document.upload.url }}" target="_blank">
+                    
+                </a>
+            </td>
+            <td><img src="{{document.upload.url }}" alt="{{ document.upload.name }}"></td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="3">No data.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+</body>
+</html>

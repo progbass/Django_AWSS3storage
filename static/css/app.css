@@ -1,0 +1,15 @@
+body {
+    height: 100%;
+    width:100%;
+}
+
+h2 {
+    color: Red;
+    font-size: 30px
+}
+
+img{
+    margin: auto 0;
+    width: 30%
+    
+}
